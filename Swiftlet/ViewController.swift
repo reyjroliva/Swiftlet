@@ -16,12 +16,19 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var startPauseBtn: UIButton!
     @IBOutlet weak var endBtn: UIButton!
+    @IBOutlet weak var currPaceLbl: UILabel!
+    @IBOutlet weak var desPaceLbl: UILabel!
+    @IBOutlet weak var timeLbl: UILabel!
+    @IBOutlet weak var distanceLbl: UILabel!
     
     
     var started = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Set Labels
+        currPaceLbl.text = "Current\nPace";
         
         //Set startPauseBtn
         startPauseBtn.setTitle("Start", for: .normal);
@@ -58,5 +65,7 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func endBtnPressed(_ sender: Any) {
+    }
 }
 
