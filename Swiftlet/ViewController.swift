@@ -17,6 +17,8 @@ let lblBuffer: CGFloat = 30;
 
 class ViewController: UIViewController {
     
+    let watch = Stopwatch();
+    
     @IBOutlet weak var startPauseBtn: UIButton!
     @IBOutlet weak var endBtn: UIButton!
     @IBOutlet weak var currPaceLbl: UILabel!
@@ -100,6 +102,10 @@ class ViewController: UIViewController {
             startPauseBtn.backgroundColor = swiftletRed;
             startPauseBtn.frame = CGRect(x: self.view.frame.width * 0.05, y: self.view.frame.height * 0.7, width: self.view.frame.width * 0.9, height: self.view.frame.height * 0.2);
             endBtn.isHidden = true;
+            
+            Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateElapsedTime(timer:)), userInfo: nil, repeats: true)
+            
+            watch.start();
         }
         else {
             started = false;
@@ -107,10 +113,29 @@ class ViewController: UIViewController {
             startPauseBtn.backgroundColor = swiftletGreen;
             startPauseBtn.frame = CGRect(x: self.view.frame.width * 0.05, y: self.view.frame.height * 0.7, width: self.view.frame.width * 0.9, height: self.view.frame.height * 0.1);
             endBtn.isHidden = false;
+            
+            watch.pause();
         }
     }
     
     @IBAction func endBtnPressed(_ sender: Any) {
+        watch.stop();
     }
+    
+    @objc func updateElapsedTime(timer : Timer)
+    {
+        if watch.isRunning
+        {
+            let minutes = Int(watch.elapsedTime/60);
+            let seconds = Int(watch.elapsedTime.truncatingRemainder(dividingBy: 60));
+            let tenOfSeconds = Int((watch.elapsedTime * 10).truncatingRemainder(dividingBy: 10));
+            elapsedTime.text = String (format: "%02d:%02d.%d", minutes, seconds, tenOfSeconds);
+        }
+        else
+        {
+            timer.invalidate();
+        }
+    }
+    
 }
 

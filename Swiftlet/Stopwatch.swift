@@ -11,6 +11,7 @@ import Foundation
 class Stopwatch
 {
     private var startTime : NSDate?;
+    private var pauseTime : NSDate?;
     
     var elapsedTime: TimeInterval {
         if let startTime = self.startTime {
@@ -27,11 +28,24 @@ class Stopwatch
     
     func start()
     {
-        startTime = NSDate();
+        if(pauseTime == nil)
+        {
+            startTime = NSDate();
+        }
+        else
+        {
+            startTime = pauseTime;
+        }
     }
     
     func stop()
     {
+        startTime = nil;
+    }
+    
+    func pause()
+    {
+        pauseTime = startTime;
         startTime = nil;
     }
 }
