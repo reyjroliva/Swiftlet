@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var desPace: UILabel!
     @IBOutlet weak var elapsedTime: UILabel!
     @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var settingBtn: UIButton!
     
     
     var started = false
@@ -98,6 +99,10 @@ class ViewController: UIViewController {
         desPace.layer.cornerRadius = 20
         desPace.backgroundColor = UIColor .gray
         
+        //Set settingsBtn
+        settingBtn.setTitleColor(swiftletBlue, for: .normal)
+        settingBtn.frame = CGRect(x: currPace.frame.maxX - settingBtn.frame.width, y: settingBtn.frame.height, width: settingBtn.frame.width, height: settingBtn.frame.height)
+        
         // Do any additional setup after loading the view, typically from a nib.
     }
     
@@ -135,6 +140,11 @@ class ViewController: UIViewController {
         secHolder = 0
         tensOfSecHolder = 0
     }
+
+    @IBAction func onSettinBtn(_ sender: Any) {
+        performSegue(withIdentifier: "moveToSettings", sender: self)
+    }
+    
     
     @objc func updateElapsedTime(timer : Timer)
     {
