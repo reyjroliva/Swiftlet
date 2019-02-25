@@ -34,18 +34,20 @@ class Stopwatch
         }
         else
         {
-            startTime = pauseTime;
+            startTime = NSDate();
+            pauseTime = nil;
         }
     }
     
     func stop()
     {
         startTime = nil;
+        pauseTime = nil;
     }
     
     func pause()
     {
-        pauseTime = startTime;
+        pauseTime = NSDate();
         startTime = nil;
     }
 }

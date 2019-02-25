@@ -33,6 +33,13 @@ class ViewController: UIViewController {
     
     var started = false;
     
+    var minutes = Int(0);
+    var seconds = Int(0);
+    var tensOfSeconds = Int(0);
+    var minHolder = Int(0);
+    var secHolder = Int(0);
+    var tensOfSecHolder = Int(0);
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -115,21 +122,28 @@ class ViewController: UIViewController {
             endBtn.isHidden = false;
             
             watch.pause();
+            minHolder = minutes;
+            secHolder = seconds;
+            tensOfSecHolder = tensOfSeconds;
         }
     }
     
     @IBAction func endBtnPressed(_ sender: Any) {
         watch.stop();
+        elapsedTime.text = "00:00.0";
+        minHolder = 0;
+        secHolder = 0;
+        tensOfSecHolder = 0;
     }
     
     @objc func updateElapsedTime(timer : Timer)
     {
         if watch.isRunning
         {
-            let minutes = Int(watch.elapsedTime/60);
-            let seconds = Int(watch.elapsedTime.truncatingRemainder(dividingBy: 60));
-            let tenOfSeconds = Int((watch.elapsedTime * 10).truncatingRemainder(dividingBy: 10));
-            elapsedTime.text = String (format: "%02d:%02d.%d", minutes, seconds, tenOfSeconds);
+            minutes = Int(watch.elapsedTime/60) + minHolder;
+            seconds = Int(watch.elapsedTime.truncatingRemainder(dividingBy: 60)) + secHolder;
+            tensOfSeconds = Int((watch.elapsedTime * 10).truncatingRemainder(dividingBy: 10)) + tensOfSecHolder;
+            elapsedTime.text = String (format: "%02d:%02d.%d", minutes, seconds, tensOfSeconds);
         }
         else
         {
