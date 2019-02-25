@@ -10,44 +10,44 @@ import Foundation
 
 class Stopwatch
 {
-    private var startTime : NSDate?;
-    private var pauseTime : NSDate?;
+    private var startTime : NSDate?
+    private var pauseTime : NSDate?
     
     var elapsedTime: TimeInterval {
         if let startTime = self.startTime {
-            return -startTime.timeIntervalSinceNow;
+            return -startTime.timeIntervalSinceNow
         }
         else {
-            return 0;
+            return 0
         }
     }
     
     var isRunning: Bool {
-        return startTime != nil;
+        return startTime != nil
     }
     
     func start()
     {
         if(pauseTime == nil)
         {
-            startTime = NSDate();
+            startTime = NSDate()
         }
         else
         {
-            startTime = NSDate();
-            pauseTime = nil;
+            startTime = NSDate()
+            pauseTime = nil
         }
     }
     
     func stop()
     {
-        startTime = nil;
-        pauseTime = nil;
+        startTime = nil
+        pauseTime = nil
     }
     
     func pause()
     {
-        pauseTime = NSDate();
-        startTime = nil;
+        pauseTime = NSDate()
+        startTime = nil
     }
 }
