@@ -18,6 +18,7 @@ let lblBuffer: CGFloat = 30
 class ViewController: UIViewController {
     
     let watch = Stopwatch()
+    let gps = GPS()
     
     @IBOutlet weak var startPauseBtn: UIButton!
     @IBOutlet weak var endBtn: UIButton!
@@ -118,6 +119,7 @@ class ViewController: UIViewController {
             Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateElapsedTime(timer:)), userInfo: nil, repeats: true)
             
             watch.start()
+            gps.startGPS()
         }
         else {
             started = false
@@ -135,6 +137,7 @@ class ViewController: UIViewController {
     
     @IBAction func endBtnPressed(_ sender: Any) {
         watch.stop()
+        gps.stopGPS()
         elapsedTime.text = "00:00.0"
         minHolder = 0
         secHolder = 0
