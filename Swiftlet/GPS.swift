@@ -6,34 +6,36 @@
 //  Copyright © 2019 Rey Oliva. All rights reserved.
 //
 
-import Foundation
 import CoreLocation
 
 class GPS: NSObject, CLLocationManagerDelegate {
-    let locationManager:CLLocationManager = CLLocationManager()
-    private var locationList: [CLLocation] = []
+    private let locationManager = LocationManager.shared
     private var distance = Measurement(value: 0, unit: UnitLength.miles)
+    private var locationList: [CLLocation] = []
+
     
-    
-    func startGPS()
+    func start()
     {
         locationManager.delegate = self
-        locationManager.requestWhenInUseAuthorization()
         locationManager.distanceFilter = 1
         locationManager.startUpdatingLocation()
     }
     
-    func stopGPS()
+    func stop()
     {
         locationManager.stopUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocation, didUpdateLocations locations: [CLLocation])
+    func getDistance()->Measurement<UnitLength>
     {
-
+        return distance
+    }
+    
+    private func locationManager(_ manager: CLLocation, didUpdateLocations locations: [CLLocation])
+    {
         for currentLocation in locations
         {
-            let howRecent = currentLocation.timestamp.timeIntervalSinceNow
+//            let howRecent = currentLocation.timestamp.timeIntervalSinceNow
 //            guard currentLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
             
             if let lastLocation = locationList.last {
