@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 let swiftletGreen = UIColor(red: 0.35, green: 0.8, blue: 0.1, alpha: 1.0)
 let swiftletRed = UIColor(red: 0.8, green: 0.1, blue: 0.1, alpha: 1.0)
@@ -30,6 +31,10 @@ class ViewController: UIViewController {
     @IBOutlet weak var elapsedTime: UILabel!
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var settingBtn: UIButton!
+    
+    private let locationManager = LocationManager.shared
+    private var dist = Measurement(value: 0, unit: UnitLength.meters)
+    private var locationList: [CLLocation] = []
     
     
     var started = false
@@ -82,7 +87,7 @@ class ViewController: UIViewController {
         currPaceLbl.text = "Current\nPace"
         currPaceLbl.frame = CGRect(x: startPauseBtn.frame.minX, y: self.view.frame.height * 0.15, width: elapsedTime.frame.width, height: self.view.frame.height * 0.1)
         
-        currPace.text = "00:00.00"
+        currPace.text = "0.0000 m/s"
         currPace.textColor = UIColor .white
         currPace.frame = CGRect(x: distance.frame.minX, y: currPaceLbl.frame.minY, width: distance.frame.width, height: distance.frame.height)
         currPace.layer.masksToBounds = true
@@ -118,6 +123,10 @@ class ViewController: UIViewController {
             Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateElapsedTime(timer:)), userInfo: nil, repeats: true)
             
             watch.start()
+            
+            locationManager.delegate = self
+            // locationManager.distanceFilter = 10
+            locationManager.startUpdatingLocation()
         }
         else {
             started = false
@@ -130,6 +139,8 @@ class ViewController: UIViewController {
             minHolder = minutes
             secHolder = seconds
             tensOfSecHolder = tensOfSeconds
+            
+            locationManager.stopUpdatingLocation()
         }
     }
     
@@ -139,6 +150,11 @@ class ViewController: UIViewController {
         minHolder = 0
         secHolder = 0
         tensOfSecHolder = 0
+        
+        locationManager.stopUpdatingLocation()
+        locationList.removeAll()
+        dist = Measurement(value: 0, unit: UnitLength.meters)
+        currPace.text = "0.0000 m/s"
     }
 
     @IBAction func onSettinBtn(_ sender: Any) {
@@ -161,5 +177,29 @@ class ViewController: UIViewController {
         }
     }
     
+}
+
+extension ViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        for newLocation in locations {
+            let howRecent = newLocation.timestamp.timeIntervalSinceNow
+            guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 1 else { continue }
+
+            if let lastLocation = locationList.last {
+                let delta = newLocation.distance(from: lastLocation)
+                dist = dist + Measurement(value: delta, unit: UnitLength.meters)
+                
+                let speedMagnitude = seconds != 0 ? dist.value / Double(seconds) : 0
+                let speed = Measurement(value: speedMagnitude, unit: UnitSpeed.metersPerSecond)
+                
+                let truncSpeed = Double(floor(10000*speed.value)/10000)
+                print("\(truncSpeed)")
+                
+                currPace.text = String(format: "%.4f m/s", truncSpeed)
+            }
+
+            locationList.append(newLocation)
+        }
+    }
 }
 
