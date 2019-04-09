@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EF56B8D1225D0A740092F661 /* SettingsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56B8D0225D0A740092F661 /* SettingsViewControllerDelegate.swift */; };
 		EF5D3021221605B000C235E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5D3020221605B000C235E2 /* AppDelegate.swift */; };
 		EF5D3023221605B000C235E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5D3022221605B000C235E2 /* ViewController.swift */; };
 		EF5D3026221605B000C235E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF5D3024221605B000C235E2 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EF56B8D0225D0A740092F661 /* SettingsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDelegate.swift; sourceTree = "<group>"; };
 		EF5D301D221605B000C235E2 /* Swiftlet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftlet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5D3020221605B000C235E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF5D3022221605B000C235E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				EF5D3029221605B000C235E2 /* LaunchScreen.storyboard */,
 				EF5D302C221605B000C235E2 /* Info.plist */,
 				EFE54FD72224567D00BF5B43 /* SettingsViewController.swift */,
+				EF56B8D0225D0A740092F661 /* SettingsViewControllerDelegate.swift */,
 			);
 			path = Swiftlet;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				EF5D3023221605B000C235E2 /* ViewController.swift in Sources */,
 				EF88ED39221F36FE0028741C /* Stopwatch.swift in Sources */,
+				EF56B8D1225D0A740092F661 /* SettingsViewControllerDelegate.swift in Sources */,
 				EF5D3021221605B000C235E2 /* AppDelegate.swift in Sources */,
 				EFE54FD82224567D00BF5B43 /* SettingsViewController.swift in Sources */,
 			);
