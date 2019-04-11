@@ -33,7 +33,7 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
     @IBOutlet weak var settingBtn: UIButton!
     
     private let locationManager = LocationManager.shared
-    private var dist = Measurement(value: 0, unit: UnitLength.meters)
+    private var dist = Measurement(value: 0, unit: UnitLength.miles)
     private var locationList: [CLLocation] = []
     
     
@@ -84,10 +84,10 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
         distance.layer.cornerRadius = 20
         distance.backgroundColor = swiftletBlue
         
-        currPaceLbl.text = "Current\nPace"
+        currPaceLbl.text = "Current\nPace (min/mi)"
         currPaceLbl.frame = CGRect(x: startPauseBtn.frame.minX, y: self.view.frame.height * 0.15, width: elapsedTime.frame.width, height: self.view.frame.height * 0.1)
         
-        currPace.text = "0.0000 m/s"
+        currPace.text = "0.0000"
         currPace.textColor = UIColor .white
         currPace.frame = CGRect(x: distance.frame.minX, y: currPaceLbl.frame.minY, width: distance.frame.width, height: distance.frame.height)
         currPace.layer.masksToBounds = true
@@ -153,7 +153,7 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
         
         locationManager.stopUpdatingLocation()
         locationList.removeAll()
-        dist = Measurement(value: 0, unit: UnitLength.meters)
+        dist = Measurement(value: 0, unit: UnitLength.miles)
         currPace.text = "0.0000 m/s"
     }
 
@@ -197,15 +197,15 @@ extension ViewController: CLLocationManagerDelegate {
 
             if let lastLocation = locationList.last {
                 let delta = newLocation.distance(from: lastLocation)
-                dist = dist + Measurement(value: delta, unit: UnitLength.meters)
+                dist = dist + Measurement(value: delta, unit: UnitLength.miles)
                 
-                let speedMagnitude = seconds != 0 ? dist.value / Double(seconds) : 0
-                let speed = Measurement(value: speedMagnitude, unit: UnitSpeed.metersPerSecond)
+                var speed = seconds != 0 ? dist.value / Double(seconds) : 0
+                speed = speed/60
                 
-                let truncSpeed = Double(floor(10000*speed.value)/10000)
-                print("\(truncSpeed)")
+                let pace = 1/speed;
                 
-                currPace.text = String(format: "%.4f m/s", truncSpeed)
+                currPace.text = String(format: "%.4f", pace)
+                distance.text = String(format: "%.2f", Double(dist.value))
             }
 
             locationList.append(newLocation)
