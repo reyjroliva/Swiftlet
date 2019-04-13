@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HealthKit
 import CoreLocation
 
 let swiftletGreen = UIColor(red: 0.35, green: 0.8, blue: 0.1, alpha: 1.0)
@@ -32,10 +33,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var settingBtn: UIButton!
     
-    private let locationManager = LocationManager.shared
-    private var dist = Measurement(value: 0, unit: UnitLength.miles)
-    private var locationList: [CLLocation] = []
-    
     
     var started = false
     
@@ -45,6 +42,31 @@ class ViewController: UIViewController {
     var minHolder = Int(0)
     var secHolder = Int(0)
     var tensOfSecHolder = Int(0)
+    
+    
+    lazy var locationManager: CLLocationManager = {
+        var _locationManager = CLLocationManager()
+        _locationManager.delegate = self
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        _locationManager.distanceFilter = 5
+        return _locationManager
+    }()
+    
+    var dist = Measurement(value: 0, unit: UnitLength.meters)
+    var instantPace = 0.0
+    lazy var locationList = [CLLocation]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.activityType = .fitness
+        locationManager.distanceFilter = 5
+        locationManager.requestAlwaysAuthorization()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,12 +142,12 @@ class ViewController: UIViewController {
             startPauseBtn.frame = CGRect(x: self.view.frame.width * 0.05, y: self.view.frame.height * 0.7, width: self.view.frame.width * 0.9, height: self.view.frame.height * 0.2)
             endBtn.isHidden = true
             
+            seconds = 0;
+            locationList.removeAll(keepingCapacity: false)
+            
             Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateElapsedTime(timer:)), userInfo: nil, repeats: true)
             
             watch.start()
-            
-            locationManager.delegate = self
-            // locationManager.distanceFilter = 10
             locationManager.startUpdatingLocation()
         }
         else {
@@ -147,14 +169,14 @@ class ViewController: UIViewController {
     @IBAction func endBtnPressed(_ sender: Any) {
         watch.stop()
         elapsedTime.text = "00:00.0"
+        currPace.text = "0.0000"
+        distance.text = "0.00"
         minHolder = 0
         secHolder = 0
         tensOfSecHolder = 0
         
         locationManager.stopUpdatingLocation()
-        locationList.removeAll()
-        dist = Measurement(value: 0, unit: UnitLength.miles)
-        currPace.text = "0.0000 m/s"
+        locationList.removeAll(keepingCapacity: false)
     }
 
     @IBAction func onSettinBtn(_ sender: Any) {
@@ -170,6 +192,9 @@ class ViewController: UIViewController {
             seconds = Int(watch.elapsedTime.truncatingRemainder(dividingBy: 60)) + secHolder
             tensOfSeconds = Int((watch.elapsedTime * 10).truncatingRemainder(dividingBy: 10)) + tensOfSecHolder
             elapsedTime.text = String (format: "%02d:%02d.%d", minutes, seconds, tensOfSeconds)
+            
+            updateDisplay()
+            
         }
         else
         {
@@ -177,27 +202,27 @@ class ViewController: UIViewController {
         }
     }
     
+    @objc func updateDisplay() {
+        let formattedDistance = FormatDisplay.distance(dist)
+        let formattedPace = FormatDisplay.pace(distance: dist, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
+        
+        distance.text = "\(formattedDistance)"
+        currPace.text = "\(formattedPace)"
+    }
 }
 
 extension ViewController: CLLocationManagerDelegate {
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    {
         for newLocation in locations {
             let howRecent = newLocation.timestamp.timeIntervalSinceNow
-            guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 1 else { continue }
-
+            guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
             if let lastLocation = locationList.last {
                 let delta = newLocation.distance(from: lastLocation)
-                dist = dist + Measurement(value: delta, unit: UnitLength.miles)
-                
-                var speed = seconds != 0 ? dist.value / Double(seconds) : 0
-                speed = speed/60
-                
-                let pace = 1/speed;
-                
-                currPace.text = String(format: "%.4f", pace)
-                distance.text = String(format: "%.2f", Double(dist.value))
+                dist = dist + Measurement(value: delta, unit: UnitLength.meters)
             }
-
+            
             locationList.append(newLocation)
         }
     }

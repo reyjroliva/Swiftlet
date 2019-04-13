@@ -7,15 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B1C236DE2256A1220025236C /* GPS.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C236DD2256A1220025236C /* GPS.swift */; };
+		B1A780C22262293100D34488 /* UnitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A780C12262293100D34488 /* UnitExtension.swift */; };
+		B1A780C42262295C00D34488 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A780C32262295C00D34488 /* FormatDisplay.swift */; };
 		B1C2371A2257B5740025236C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C237192257B5740025236C /* LocationManager.swift */; };
 		EF5D3021221605B000C235E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5D3020221605B000C235E2 /* AppDelegate.swift */; };
 		EF5D3023221605B000C235E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5D3022221605B000C235E2 /* ViewController.swift */; };
 		EF5D3026221605B000C235E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF5D3024221605B000C235E2 /* Main.storyboard */; };
 		EF5D3028221605B000C235E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EF5D3027221605B000C235E2 /* Assets.xcassets */; };
 		EF5D302B221605B000C235E2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF5D3029221605B000C235E2 /* LaunchScreen.storyboard */; };
-		EF5D3036221605B000C235E2 /* SwiftletTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5D3035221605B000C235E2 /* SwiftletTests.swift */; };
-		EF5D3041221605B000C235E2 /* SwiftletUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5D3040221605B000C235E2 /* SwiftletUITests.swift */; };
 		EF88ED39221F36FE0028741C /* Stopwatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF88ED38221F36FE0028741C /* Stopwatch.swift */; };
 		EFE54FD82224567D00BF5B43 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EFE54FD72224567D00BF5B43 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
@@ -38,7 +37,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B1C236DD2256A1220025236C /* GPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPS.swift; sourceTree = "<group>"; };
+		B1A780C12262293100D34488 /* UnitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitExtension.swift; sourceTree = "<group>"; };
+		B1A780C32262295C00D34488 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
 		B1C237192257B5740025236C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		EF5D301D221605B000C235E2 /* Swiftlet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftlet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5D3020221605B000C235E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -48,11 +48,7 @@
 		EF5D302A221605B000C235E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		EF5D302C221605B000C235E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF5D3031221605B000C235E2 /* SwiftletTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftletTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF5D3035221605B000C235E2 /* SwiftletTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftletTests.swift; sourceTree = "<group>"; };
-		EF5D3037221605B000C235E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF5D303C221605B000C235E2 /* SwiftletUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftletUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		EF5D3040221605B000C235E2 /* SwiftletUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftletUITests.swift; sourceTree = "<group>"; };
-		EF5D3042221605B000C235E2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EF88ED38221F36FE0028741C /* Stopwatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stopwatch.swift; sourceTree = "<group>"; };
 		EFE54FD72224567D00BF5B43 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,12 +78,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B1A780C0226228E700D34488 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B1A780C12262293100D34488 /* UnitExtension.swift */,
+				B1A780C32262295C00D34488 /* FormatDisplay.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		EF5D3014221605B000C235E2 = {
 			isa = PBXGroup;
 			children = (
+				B1A780C0226228E700D34488 /* Supporting Files */,
 				EF5D301F221605B000C235E2 /* Swiftlet */,
-				EF5D3034221605B000C235E2 /* SwiftletTests */,
-				EF5D303F221605B000C235E2 /* SwiftletUITests */,
 				EF5D301E221605B000C235E2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -113,28 +117,9 @@
 				EF5D3029221605B000C235E2 /* LaunchScreen.storyboard */,
 				EF5D302C221605B000C235E2 /* Info.plist */,
 				EFE54FD72224567D00BF5B43 /* SettingsViewController.swift */,
-				B1C236DD2256A1220025236C /* GPS.swift */,
 				B1C237192257B5740025236C /* LocationManager.swift */,
 			);
 			path = Swiftlet;
-			sourceTree = "<group>";
-		};
-		EF5D3034221605B000C235E2 /* SwiftletTests */ = {
-			isa = PBXGroup;
-			children = (
-				EF5D3035221605B000C235E2 /* SwiftletTests.swift */,
-				EF5D3037221605B000C235E2 /* Info.plist */,
-			);
-			path = SwiftletTests;
-			sourceTree = "<group>";
-		};
-		EF5D303F221605B000C235E2 /* SwiftletUITests */ = {
-			isa = PBXGroup;
-			children = (
-				EF5D3040221605B000C235E2 /* SwiftletUITests.swift */,
-				EF5D3042221605B000C235E2 /* Info.plist */,
-			);
-			path = SwiftletUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,7 +185,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = "Rey Oliva";
 				TargetAttributes = {
 					EF5D301C221605B000C235E2 = {
@@ -277,11 +262,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				EF5D3023221605B000C235E2 /* ViewController.swift in Sources */,
+				B1A780C42262295C00D34488 /* FormatDisplay.swift in Sources */,
 				EF88ED39221F36FE0028741C /* Stopwatch.swift in Sources */,
 				B1C2371A2257B5740025236C /* LocationManager.swift in Sources */,
 				EF5D3021221605B000C235E2 /* AppDelegate.swift in Sources */,
 				EFE54FD82224567D00BF5B43 /* SettingsViewController.swift in Sources */,
-				B1C236DE2256A1220025236C /* GPS.swift in Sources */,
+				B1A780C22262293100D34488 /* UnitExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,7 +275,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF5D3036221605B000C235E2 /* SwiftletTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,7 +282,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EF5D3041221605B000C235E2 /* SwiftletUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,6 +334,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -357,6 +342,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -384,7 +370,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -407,6 +393,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -414,6 +401,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -435,7 +423,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -447,12 +435,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RHLZS2Q8AN;
 				INFOPLIST_FILE = Swiftlet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.reyjroliva.Swiftlet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reyjroliva.Swiftlet503;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -462,12 +452,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = RHLZS2Q8AN;
 				INFOPLIST_FILE = Swiftlet/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.reyjroliva.Swiftlet;
+				PRODUCT_BUNDLE_IDENTIFIER = com.reyjroliva.Swiftlet503;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
