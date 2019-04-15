@@ -9,11 +9,8 @@
 /* Begin PBXBuildFile section */
 		B1A780C22262293100D34488 /* UnitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A780C12262293100D34488 /* UnitExtension.swift */; };
 		B1A780C42262295C00D34488 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A780C32262295C00D34488 /* FormatDisplay.swift */; };
-<<<<<<< HEAD
-=======
 		EF56B8D1225D0A740092F661 /* SettingsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56B8D0225D0A740092F661 /* SettingsViewControllerDelegate.swift */; };
 		B1C2371A2257B5740025236C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1C237192257B5740025236C /* LocationManager.swift */; };
->>>>>>> b16d38877a33ada7a7edda423feb7fafbe09902d
 		EF5D3021221605B000C235E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5D3020221605B000C235E2 /* AppDelegate.swift */; };
 		EF5D3023221605B000C235E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5D3022221605B000C235E2 /* ViewController.swift */; };
 		EF5D3026221605B000C235E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EF5D3024221605B000C235E2 /* Main.storyboard */; };
@@ -43,12 +40,9 @@
 /* Begin PBXFileReference section */
 		B1A780C12262293100D34488 /* UnitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitExtension.swift; sourceTree = "<group>"; };
 		B1A780C32262295C00D34488 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-=======
 		EF56B8D0225D0A740092F661 /* SettingsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDelegate.swift; sourceTree = "<group>"; };
 		B1C236DD2256A1220025236C /* GPS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPS.swift; sourceTree = "<group>"; };
 		B1C237192257B5740025236C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
->>>>>>> b16d38877a33ada7a7edda423feb7fafbe09902d
 		EF5D301D221605B000C235E2 /* Swiftlet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftlet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5D3020221605B000C235E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EF5D3022221605B000C235E2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -96,17 +90,9 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B1C945B32264DC740008D63B /* Audio */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Audio;
-			sourceTree = "<group>";
-		};
 		EF5D3014221605B000C235E2 = {
 			isa = PBXGroup;
 			children = (
-				B1C945B32264DC740008D63B /* Audio */,
 				B1A780C0226228E700D34488 /* Supporting Files */,
 				EF5D301F221605B000C235E2 /* Swiftlet */,
 				EF5D301E221605B000C235E2 /* Products */,
@@ -134,11 +120,8 @@
 				EF5D3029221605B000C235E2 /* LaunchScreen.storyboard */,
 				EF5D302C221605B000C235E2 /* Info.plist */,
 				EFE54FD72224567D00BF5B43 /* SettingsViewController.swift */,
-<<<<<<< HEAD
-=======
 				EF56B8D0225D0A740092F661 /* SettingsViewControllerDelegate.swift */,
 				B1C237192257B5740025236C /* LocationManager.swift */,
->>>>>>> b16d38877a33ada7a7edda423feb7fafbe09902d
 			);
 			path = Swiftlet;
 			sourceTree = "<group>";
@@ -285,11 +268,8 @@
 				EF5D3023221605B000C235E2 /* ViewController.swift in Sources */,
 				B1A780C42262295C00D34488 /* FormatDisplay.swift in Sources */,
 				EF88ED39221F36FE0028741C /* Stopwatch.swift in Sources */,
-<<<<<<< HEAD
-=======
 				EF56B8D1225D0A740092F661 /* SettingsViewControllerDelegate.swift in Sources */,
 				B1C2371A2257B5740025236C /* LocationManager.swift in Sources */,
->>>>>>> b16d38877a33ada7a7edda423feb7fafbe09902d
 				EF5D3021221605B000C235E2 /* AppDelegate.swift in Sources */,
 				EFE54FD82224567D00BF5B43 /* SettingsViewController.swift in Sources */,
 				B1A780C22262293100D34488 /* UnitExtension.swift in Sources */,
