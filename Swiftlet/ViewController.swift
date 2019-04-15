@@ -17,7 +17,7 @@ let btnBuffer: CGFloat = 10
 let lblBuffer: CGFloat = 30
 
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, SettingsViewContollerDelegate {
     
     let watch = Stopwatch()
     
@@ -182,6 +182,12 @@ class ViewController: UIViewController {
         performSegue(withIdentifier: "moveToSettings", sender: self)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "moveToSettings"){
+            let settingsVC = segue.destination as! SettingsViewController
+            settingsVC.delegate = self
+        }
+    }
     
     @objc func updateElapsedTime(timer : Timer)
     {
@@ -207,6 +213,10 @@ class ViewController: UIViewController {
         
         distance.text = "\(formattedDistance)"
         currPace.text = "\(formattedPace)"
+    }
+
+    func updateDesPace() {
+        desPace.text = String (format: "%02d:%02d", minutesPerMile, secondsPerMile)
     }
 }
 
