@@ -142,9 +142,6 @@ class ViewController: UIViewController {
             startPauseBtn.frame = CGRect(x: self.view.frame.width * 0.05, y: self.view.frame.height * 0.7, width: self.view.frame.width * 0.9, height: self.view.frame.height * 0.2)
             endBtn.isHidden = true
             
-            seconds = 0;
-            locationList.removeAll(keepingCapacity: false)
-            
             Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateElapsedTime(timer:)), userInfo: nil, repeats: true)
             
             watch.start()
@@ -177,6 +174,8 @@ class ViewController: UIViewController {
         
         locationManager.stopUpdatingLocation()
         locationList.removeAll(keepingCapacity: false)
+        dist = Measurement(value: 0, unit: UnitLength.meters)
+        instantPace = 0.0
     }
 
     @IBAction func onSettinBtn(_ sender: Any) {
