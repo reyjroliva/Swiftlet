@@ -20,6 +20,7 @@ let lblBuffer: CGFloat = 30
 class ViewController: UIViewController, SettingsViewContollerDelegate {
     
     let watch = Stopwatch()
+    let audio = BinauralAudio()
     
     @IBOutlet weak var startPauseBtn: UIButton!
     @IBOutlet weak var endBtn: UIButton!
@@ -158,6 +159,7 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
             endBtn.isHidden = false
             
             watch.pause()
+            audio.stopSound()
             minHolder = minutes
             secHolder = seconds
             tensOfSecHolder = tensOfSeconds
@@ -179,6 +181,7 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
         locationList.removeAll(keepingCapacity: false)
         dist = Measurement(value: 0, unit: UnitLength.meters)
         instantPace = 0.0
+        paceTime = 0
     }
 
     @IBAction func onSettinBtn(_ sender: Any) {
@@ -214,6 +217,8 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
             
                 currPace.text = String (format: "%.2f", (paceMagnitude as NSString).doubleValue)
                 paceTime = seconds
+                
+                audio.checkPace(pace: (paceMagnitude as NSString).doubleValue)
             }
         }
         else

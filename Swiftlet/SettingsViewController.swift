@@ -51,7 +51,6 @@ class SettingsViewController: UIViewController {
         secPerMi.layer.masksToBounds = true
         secPerMi.layer.cornerRadius = 20
         secPerMi.backgroundColor = swiftletBlue
-        
         // Do any additional setup after loading the view.
     }
 
@@ -62,15 +61,11 @@ class SettingsViewController: UIViewController {
     
     
     @IBAction func updateMinPerMile(_ sender: Any) {
-        print("Minutes per mile: %d", minutesPerMile)
         minutesPerMile = Int(minPerMi.text!) ?? 0
-        print("Minutes per mile: %d", minutesPerMile)
     }
     
     @IBAction func updateSecPerMi(_ sender: Any) {
-        print("Seconds per mile: %d", secondsPerMile)
         secondsPerMile = Int(secPerMi.text!) ?? 0
-        print("Seconds per mile: %d", secondsPerMile)
     }
     
     
