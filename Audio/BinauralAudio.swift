@@ -11,44 +11,45 @@ import AVFoundation
 
 class BinauralAudio {
     var audioPlayer: AVAudioPlayer?
-    var targetPace = 8.0;
+    var targetPace = Double(0.00)
     
     func checkPace(pace: Double)
     {
+        print("\(targetPace)")
         let difference = targetPace - pace
         
         // Ahead desired pace
-        if(difference >= 5)
+        if(difference >= 0.75)
         {
-            playSound(index: 5)
+            playSound(index: 0.75)
         }
-        else if(difference >= 3)
+        else if(difference >= 0.5)
         {
-            playSound(index: 3)
+            playSound(index: 0.5)
         }
-        else if(difference >= 1)
+        else if(difference >= 0.25)
         {
-            playSound(index: 1)
+            playSound(index: 0.25)
         }
 
         // Behind desired pace
-        else if(difference <= -5)
+        else if(difference <= -0.75)
         {
-            playSound(index: -5)
+            playSound(index: -0.75)
         }
-        else if(difference <= -3)
+        else if(difference <= -0.5)
         {
-            playSound(index: -3)
+            playSound(index: -0.5)
         }
-        else if(difference <= -1)
+        else if(difference <= -0.25)
         {
-            playSound(index: -1)
+            playSound(index: -0.25)
         }
         
         // Keeping target pace
         else
         {
-            print("==")
+            playSound(index: 0)
         }
     }
     
@@ -60,17 +61,21 @@ class BinauralAudio {
         }
     }
     
-    func playSound(index: Int)
+    func playSound(index: Double)
     {
         var fileURL: String?
         
         if(index < 0)
         {
-            fileURL = Bundle.main.path(forResource: "back", ofType: "wav")
+            fileURL = Bundle.main.path(forResource: "Back", ofType: "wav")
+        }
+        else if(index > 0)
+        {
+            fileURL = Bundle.main.path(forResource: "Front", ofType: "wav")
         }
         else
         {
-            fileURL = Bundle.main.path(forResource: "front", ofType: "wav")
+            fileURL = Bundle.main.path(forResource: "Bell", ofType: "mp3")
         }
         
         do {
@@ -81,19 +86,18 @@ class BinauralAudio {
         
         switch(abs(index))
         {
-        case 5:
+        case 0.75:
             audioPlayer?.volume = 0.25
-        case 3:
+        case 0.5:
             audioPlayer?.volume = 0.5
-        case 1:
+        case 0.25:
             audioPlayer?.volume = 0.75
         default:
             audioPlayer?.volume = 1
         }
         
-        var vol = audioPlayer?.volume
-        print("\(vol)")
-        audioPlayer?.numberOfLoops = -1;
+        print("\(index)")
+        audioPlayer?.numberOfLoops = 0;
         audioPlayer?.prepareToPlay()
         audioPlayer?.play()
     }

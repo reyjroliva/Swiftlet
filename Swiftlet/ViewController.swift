@@ -229,6 +229,7 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
 
     func updateDesPace() {
         desPace.text = String (format: "%02d:%02d", minutesPerMile, secondsPerMile)
+        audio.targetPace = Double(minutesPerMile) + (Double(secondsPerMile)/60)
     }
 }
 

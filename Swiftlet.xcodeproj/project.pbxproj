@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B1466F712264E3E200AF8D68 /* front.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1466F6F2264E3E200AF8D68 /* front.wav */; };
-		B1466F722264E3E200AF8D68 /* back.wav in Resources */ = {isa = PBXBuildFile; fileRef = B1466F702264E3E200AF8D68 /* back.wav */; };
+		B127B199226BBC9400A4164F /* Back.wav in Resources */ = {isa = PBXBuildFile; fileRef = B127B197226BBC9300A4164F /* Back.wav */; };
+		B127B19A226BBC9400A4164F /* Front.wav in Resources */ = {isa = PBXBuildFile; fileRef = B127B198226BBC9400A4164F /* Front.wav */; };
 		B1466F742264E42400AF8D68 /* BinauralAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1466F732264E42400AF8D68 /* BinauralAudio.swift */; };
 		B1A780C22262293100D34488 /* UnitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A780C12262293100D34488 /* UnitExtension.swift */; };
 		B1A780C42262295C00D34488 /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1A780C32262295C00D34488 /* FormatDisplay.swift */; };
+		B1CF04E5226BB49700169745 /* Bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = B1CF04E4226BB49700169745 /* Bell.mp3 */; };
 		EF56B8D1225D0A740092F661 /* SettingsViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF56B8D0225D0A740092F661 /* SettingsViewControllerDelegate.swift */; };
 		EF5D3021221605B000C235E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5D3020221605B000C235E2 /* AppDelegate.swift */; };
 		EF5D3023221605B000C235E2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF5D3022221605B000C235E2 /* ViewController.swift */; };
@@ -40,11 +41,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		B1466F6F2264E3E200AF8D68 /* front.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = front.wav; sourceTree = "<group>"; };
-		B1466F702264E3E200AF8D68 /* back.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = back.wav; sourceTree = "<group>"; };
+		B127B197226BBC9300A4164F /* Back.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Back.wav; sourceTree = "<group>"; };
+		B127B198226BBC9400A4164F /* Front.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Front.wav; sourceTree = "<group>"; };
 		B1466F732264E42400AF8D68 /* BinauralAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinauralAudio.swift; sourceTree = "<group>"; };
 		B1A780C12262293100D34488 /* UnitExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitExtension.swift; sourceTree = "<group>"; };
 		B1A780C32262295C00D34488 /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
+		B1CF04E4226BB49700169745 /* Bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = Bell.mp3; path = "../../../Downloads/Bell-sound-effect-ding/Bell.mp3"; sourceTree = "<group>"; };
 		EF56B8D0225D0A740092F661 /* SettingsViewControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewControllerDelegate.swift; sourceTree = "<group>"; };
 		EF5D301D221605B000C235E2 /* Swiftlet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Swiftlet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EF5D3020221605B000C235E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -87,8 +89,9 @@
 		B1466F6E2264E39900AF8D68 /* Audio */ = {
 			isa = PBXGroup;
 			children = (
-				B1466F702264E3E200AF8D68 /* back.wav */,
-				B1466F6F2264E3E200AF8D68 /* front.wav */,
+				B127B197226BBC9300A4164F /* Back.wav */,
+				B127B198226BBC9400A4164F /* Front.wav */,
+				B1CF04E4226BB49700169745 /* Bell.mp3 */,
 				B1466F732264E42400AF8D68 /* BinauralAudio.swift */,
 			);
 			path = Audio;
@@ -251,10 +254,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B1466F722264E3E200AF8D68 /* back.wav in Resources */,
+				B127B19A226BBC9400A4164F /* Front.wav in Resources */,
 				EF5D302B221605B000C235E2 /* LaunchScreen.storyboard in Resources */,
+				B127B199226BBC9400A4164F /* Back.wav in Resources */,
 				EF5D3028221605B000C235E2 /* Assets.xcassets in Resources */,
-				B1466F712264E3E200AF8D68 /* front.wav in Resources */,
+				B1CF04E5226BB49700169745 /* Bell.mp3 in Resources */,
 				EF5D3026221605B000C235E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
