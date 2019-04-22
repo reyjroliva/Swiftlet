@@ -20,6 +20,7 @@ let lblBuffer: CGFloat = 30
 class ViewController: UIViewController, SettingsViewContollerDelegate {
     
     let watch = Stopwatch()
+    let audio = BinauralAudio()
     
     @IBOutlet weak var startPauseBtn: UIButton!
     @IBOutlet weak var endBtn: UIButton!
@@ -55,6 +56,8 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
     var dist = Measurement(value: 0, unit: UnitLength.meters)
     var instantPace = 0.0
     lazy var locationList = [CLLocation]()
+    var paceTime = Int(0)
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,6 +70,7 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
         locationManager.distanceFilter = 5
         locationManager.requestAlwaysAuthorization()
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -109,7 +113,7 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
         currPaceLbl.text = "Current\nPace (min/mi)"
         currPaceLbl.frame = CGRect(x: startPauseBtn.frame.minX, y: self.view.frame.height * 0.15, width: elapsedTime.frame.width, height: self.view.frame.height * 0.1)
         
-        currPace.text = "0.0000"
+        currPace.text = "0.00"
         currPace.textColor = UIColor .white
         currPace.frame = CGRect(x: distance.frame.minX, y: currPaceLbl.frame.minY, width: distance.frame.width, height: distance.frame.height)
         currPace.layer.masksToBounds = true
@@ -142,9 +146,6 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
             startPauseBtn.frame = CGRect(x: self.view.frame.width * 0.05, y: self.view.frame.height * 0.7, width: self.view.frame.width * 0.9, height: self.view.frame.height * 0.2)
             endBtn.isHidden = true
             
-            seconds = 0;
-            locationList.removeAll(keepingCapacity: false)
-            
             Timer.scheduledTimer(timeInterval: 0.1, target: self, selector: #selector(updateElapsedTime(timer:)), userInfo: nil, repeats: true)
             
             watch.start()
@@ -158,6 +159,7 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
             endBtn.isHidden = false
             
             watch.pause()
+            audio.stopSound()
             minHolder = minutes
             secHolder = seconds
             tensOfSecHolder = tensOfSeconds
@@ -169,7 +171,7 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
     @IBAction func endBtnPressed(_ sender: Any) {
         watch.stop()
         elapsedTime.text = "00:00.0"
-        currPace.text = "0.0000"
+        currPace.text = "0.00"
         distance.text = "0.00"
         minHolder = 0
         secHolder = 0
@@ -177,6 +179,9 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
         
         locationManager.stopUpdatingLocation()
         locationList.removeAll(keepingCapacity: false)
+        dist = Measurement(value: 0, unit: UnitLength.meters)
+        instantPace = 0.0
+        paceTime = 0
     }
 
     @IBAction func onSettinBtn(_ sender: Any) {
@@ -199,27 +204,35 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
             tensOfSeconds = Int((watch.elapsedTime * 10).truncatingRemainder(dividingBy: 10)) + tensOfSecHolder
             elapsedTime.text = String (format: "%02d:%02d.%d", minutes, seconds, tensOfSeconds)
             
-            updateDisplay()
+            let formattedDistance = FormatDisplay.distance(dist)
+            let distanceIndex = formattedDistance.firstIndex(of: " ") ?? formattedDistance.endIndex
+            let distanceMagnitude  = formattedDistance[..<distanceIndex]
+            distance.text = String (format: "%.2f", (distanceMagnitude as NSString).doubleValue)
+
+            if(seconds >= paceTime + 3)
+            {
+                let formattedPace = FormatDisplay.pace(distance: dist, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
+                let paceIndex = formattedPace.firstIndex(of: " ") ?? formattedPace.endIndex
+                let paceMagnitude = formattedPace[..<paceIndex]
             
+                currPace.text = String (format: "%.2f", (paceMagnitude as NSString).doubleValue)
+                paceTime = seconds
+                
+                audio.checkPace(pace: (paceMagnitude as NSString).doubleValue)
+            }
         }
         else
         {
             timer.invalidate()
         }
     }
-    
-    @objc func updateDisplay() {
-        let formattedDistance = FormatDisplay.distance(dist)
-        let formattedPace = FormatDisplay.pace(distance: dist, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
-        
-        distance.text = "\(formattedDistance)"
-        currPace.text = "\(formattedPace)"
-    }
 
     func updateDesPace() {
         desPace.text = String (format: "%02d:%02d", minutesPerMile, secondsPerMile)
+        audio.targetPace = Double(minutesPerMile) + (Double(secondsPerMile)/60)
     }
 }
+
 
 extension ViewController: CLLocationManagerDelegate {
     
@@ -232,7 +245,6 @@ extension ViewController: CLLocationManagerDelegate {
                 let delta = newLocation.distance(from: lastLocation)
                 dist = dist + Measurement(value: delta, unit: UnitLength.meters)
             }
-            
             locationList.append(newLocation)
         }
     }
