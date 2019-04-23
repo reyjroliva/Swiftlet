@@ -56,7 +56,6 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
     var dist = Measurement(value: 0, unit: UnitLength.meters)
     var instantPace = 0.0
     lazy var locationList = [CLLocation]()
-    var paceTime = Int(0)
     
     
     override func viewWillAppear(_ animated: Bool) {
@@ -181,7 +180,6 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
         locationList.removeAll(keepingCapacity: false)
         dist = Measurement(value: 0, unit: UnitLength.meters)
         instantPace = 0.0
-        paceTime = 0
     }
 
     @IBAction func onSettinBtn(_ sender: Any) {
@@ -209,14 +207,13 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
             let distanceMagnitude  = formattedDistance[..<distanceIndex]
             distance.text = String (format: "%.2f", (distanceMagnitude as NSString).doubleValue)
 
-            if(seconds >= paceTime + 3)
+            if(seconds % 3 == 0 && tensOfSeconds == 0)
             {
                 let formattedPace = FormatDisplay.pace(distance: dist, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
                 let paceIndex = formattedPace.firstIndex(of: " ") ?? formattedPace.endIndex
                 let paceMagnitude = formattedPace[..<paceIndex]
             
                 currPace.text = String (format: "%.2f", (paceMagnitude as NSString).doubleValue)
-                paceTime = seconds
                 
                 audio.checkPace(pace: (paceMagnitude as NSString).doubleValue)
             }
