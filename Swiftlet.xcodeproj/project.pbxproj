@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B1166C05226F52200029D6A3 /* SwiftletAppIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = B1166C04226F52200029D6A3 /* SwiftletAppIcon.png */; };
 		B127B199226BBC9400A4164F /* Back.wav in Resources */ = {isa = PBXBuildFile; fileRef = B127B197226BBC9300A4164F /* Back.wav */; };
 		B127B19A226BBC9400A4164F /* Front.wav in Resources */ = {isa = PBXBuildFile; fileRef = B127B198226BBC9400A4164F /* Front.wav */; };
 		B1466F742264E42400AF8D68 /* BinauralAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = B1466F732264E42400AF8D68 /* BinauralAudio.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B1166C04226F52200029D6A3 /* SwiftletAppIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SwiftletAppIcon.png; sourceTree = "<group>"; };
 		B127B197226BBC9300A4164F /* Back.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Back.wav; sourceTree = "<group>"; };
 		B127B198226BBC9400A4164F /* Front.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Front.wav; sourceTree = "<group>"; };
 		B1466F732264E42400AF8D68 /* BinauralAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinauralAudio.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 				EF5D3027221605B000C235E2 /* Assets.xcassets */,
 				EF5D3029221605B000C235E2 /* LaunchScreen.storyboard */,
 				EF5D302C221605B000C235E2 /* Info.plist */,
+				B1166C04226F52200029D6A3 /* SwiftletAppIcon.png */,
 				EFE54FD72224567D00BF5B43 /* SettingsViewController.swift */,
 				EF56B8D0225D0A740092F661 /* SettingsViewControllerDelegate.swift */,
 			);
@@ -254,6 +257,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B1166C05226F52200029D6A3 /* SwiftletAppIcon.png in Resources */,
 				B127B19A226BBC9400A4164F /* Front.wav in Resources */,
 				EF5D302B221605B000C235E2 /* LaunchScreen.storyboard in Resources */,
 				B127B199226BBC9400A4164F /* Back.wav in Resources */,
