@@ -209,7 +209,8 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
 
             if(seconds % 3 == 0 && tensOfSeconds == 0)
             {
-                let formattedPace = FormatDisplay.pace(distance: dist, seconds: seconds, outputUnit: UnitSpeed.minutesPerMile)
+                let totalSeconds = (60 * minutes) + seconds
+                let formattedPace = FormatDisplay.pace(distance: dist, seconds: totalSeconds, outputUnit: UnitSpeed.minutesPerMile)
                 let paceIndex = formattedPace.firstIndex(of: " ") ?? formattedPace.endIndex
                 let paceMagnitude = formattedPace[..<paceIndex]
             
