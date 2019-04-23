@@ -15,7 +15,6 @@ class BinauralAudio {
     
     func checkPace(pace: Double)
     {
-        print("\(targetPace)")
         let difference = pace - targetPace
         
         // Ahead desired pace
@@ -55,7 +54,7 @@ class BinauralAudio {
     
     func stopSound()
     {
-        if(audioPlayer!.isPlaying)
+        if(audioPlayer?.isPlaying ?? false)
         {
             audioPlayer?.stop()
         }
