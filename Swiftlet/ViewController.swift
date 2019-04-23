@@ -200,6 +200,16 @@ class ViewController: UIViewController, SettingsViewContollerDelegate {
             minutes = Int(watch.elapsedTime/60) + minHolder
             seconds = Int(watch.elapsedTime.truncatingRemainder(dividingBy: 60)) + secHolder
             tensOfSeconds = Int((watch.elapsedTime * 10).truncatingRemainder(dividingBy: 10)) + tensOfSecHolder
+            if(tensOfSeconds >= 10)
+            {
+                tensOfSeconds = tensOfSeconds - 10
+                seconds = seconds + 1
+            }
+            if(seconds >= 60)
+            {
+                seconds = seconds - 60
+                minutes = minutes + 1
+            }
             elapsedTime.text = String (format: "%02d:%02d.%d", minutes, seconds, tensOfSeconds)
             
             let formattedDistance = FormatDisplay.distance(dist)
