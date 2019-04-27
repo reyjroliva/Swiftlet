@@ -8,11 +8,13 @@ The following steps outline how to install and run Swiftlet:
 2. Open cloned directory in Xcode. Because the application was created using Swift, it only exists in Xcode.
 
 **To simulate on computer:**
+
 3. Select the desired virtual device in the top right corner (iPhone XR recommended).
 4. Build/run the application by pressing the play button in the top right corner.
 5. Ensure location data is enable by going to Debug->Location->City Run.
 
 **To simulate on iPhone:**
+
 3. Connect iPhone to computer.
 4. Select iPhone device from top right corner.
 5. Build/run the application by pressing the play button in the top right corner.
